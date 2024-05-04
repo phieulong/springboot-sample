@@ -8,6 +8,9 @@
 
 name: Java CI with Maven
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [ "main" ]
@@ -15,7 +18,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-and-test:
 
     runs-on: ubuntu-latest
 

@@ -45,11 +45,18 @@ public class OrderControllerTest {
 
     @Test
     public void testGetOrder_withoutToken_thenReturn401(){
-        given().when().get("/v1/orders").then().statusCode(HttpStatus.SC_UNAUTHORIZED);
+        given()
+                .when()
+                .get("/v1/orders")
+                .then().statusCode(HttpStatus.SC_UNAUTHORIZED);
     }
 
     @Test
-    public void testGetOrder_withoutWrongToken_thenReturn401(){
-        given().when().header(HttpHeaders.AUTHORIZATION, generateJwt("99", "Customer")).get("/v1/orders").then().statusCode(HttpStatus.SC_UNAUTHORIZED);
+    public void testGetOrder_withWrongToken_thenReturn401(){
+        given()
+                .when()
+                .header(HttpHeaders.AUTHORIZATION, generateJwt("99", "Customer"))
+                .get("/v1/orders")
+                .then().statusCode(HttpStatus.SC_UNAUTHORIZED);
     }
 }

@@ -1,4 +1,4 @@
-package phieulong.resources;
+package phieulong.api.resources;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

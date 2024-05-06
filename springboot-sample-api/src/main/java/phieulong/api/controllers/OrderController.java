@@ -1,8 +1,8 @@
-package phieulong.controllers;
+package phieulong.api.controllers;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import phieulong.resources.Resource;
+import phieulong.api.resources.Resource;
 
 
 @RestController

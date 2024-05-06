@@ -61,8 +61,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     private String getToken(HttpServletRequest request) {
         final String token = request.getHeader(HttpHeaders.AUTHORIZATION);
-        System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
-        System.out.println(token);
         if (StringUtils.isNotEmpty(token) && StringUtils.startsWithIgnoreCase(token, JWT_TOKEN_PREFIX)) {
             return token.replace(JWT_TOKEN_PREFIX, "");
         }

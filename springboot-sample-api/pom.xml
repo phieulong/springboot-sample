@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-<!--            <version>${commons-langs3.version}</version>-->
+            <version>${commons-langs3.version}</version>
         </dependency>
 
         <dependency>
@@ -36,7 +36,7 @@
 
     <properties>
        <swagger-annotations.version>2.2.21</swagger-annotations.version>
-<!--       <commons-langs3.version>3.14.0</commons-langs3.version>-->
-<!--       <io.rest-assured.version>5.4.0</io.rest-assured.version>-->
+       <commons-langs3.version>3.14.0</commons-langs3.version>
+       <io.rest-assured.version>5.4.0</io.rest-assured.version>
     </properties>
 </project>

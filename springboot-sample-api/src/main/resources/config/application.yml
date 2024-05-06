@@ -1,0 +1,4 @@
+app.security:
+  protected-urls:
+    - {method: GET, url: "/v1/orders"}
+

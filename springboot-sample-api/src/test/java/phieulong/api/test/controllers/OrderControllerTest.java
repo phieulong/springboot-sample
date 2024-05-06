@@ -55,7 +55,7 @@ public class OrderControllerTest {
     public void testGetOrder_withWrongToken_thenReturn401(){
         given()
                 .when()
-                .header(HttpHeaders.AUTHORIZATION, generateJwt("99", "Customer"))
+                .header(HttpHeaders.AUTHORIZATION, "WRONG_TOKEN")
                 .get("/v1/orders")
                 .then().statusCode(HttpStatus.SC_UNAUTHORIZED);
     }

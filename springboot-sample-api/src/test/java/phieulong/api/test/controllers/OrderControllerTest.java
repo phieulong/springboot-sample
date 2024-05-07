@@ -17,6 +17,7 @@ import phieulong.api.utils.TokenUtil;
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.*;
 
 @SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(profiles = {"test"})
@@ -58,5 +59,42 @@ public class OrderControllerTest {
                 .header(HttpHeaders.AUTHORIZATION, "WRONG_TOKEN")
                 .get("/v1/orders")
                 .then().statusCode(HttpStatus.SC_UNAUTHORIZED);
+    }
+
+//    @Test
+//    public void testGetOrder_withValidToken_thenReturn200(){
+//        given()
+//                .when()
+//                .header(HttpHeaders.AUTHORIZATION, generateJwt("99", "CUSTOMER"))
+//                .get("/v1/orders")
+//                .then().statusCode(HttpStatus.SC_OK)
+//                .body("data", equalTo("Ok"));
+//    }
+
+    @Test
+    public void testGetOrder_thenReturn200(){
+        given()
+                .when()
+                .header(HttpHeaders.AUTHORIZATION, generateJwt("99", "CUSTOMER"))
+                .get("/v1/orders")
+                .then().statusCode(HttpStatus.SC_OK)
+                .body("data.id", matchesRegex("d+"))
+                .body("data.user_id", equalTo("99"))
+                .body("data.created_at", matchesRegex("d+"))
+                .body("data.updated_at", matchesRegex("d+"));
+    }
+
+
+    @Test
+    public void testCreateOrder_thenReturn200(){
+        given()
+                .when()
+                .header(HttpHeaders.AUTHORIZATION, generateJwt("99", "CUSTOMER"))
+                .post("/v1/orders")
+                .then().statusCode(HttpStatus.SC_OK)
+                .body("data.id", matchesRegex("d+"))
+                .body("data.user_id", equalTo("99"))
+                .body("data.created_at", matchesRegex("d+"))
+                .body("data.updated_at", matchesRegex("d+"));
     }
 }

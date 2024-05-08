@@ -12,8 +12,6 @@ permissions:
   contents: write
 
 on:
-  push:
-    branches: [ "main", "feat/*" ]
   pull_request:
     branches: [ "main" ]
 

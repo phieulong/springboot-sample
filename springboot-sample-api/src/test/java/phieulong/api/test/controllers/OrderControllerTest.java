@@ -2,6 +2,7 @@ package phieulong.api.test.controllers;
 
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
+import lombok.SneakyThrows;
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
@@ -72,12 +73,14 @@ public class OrderControllerTest {
 //    }
 
     @Test
+    @SneakyThrows
     public void testGetOrder_thenReturn200(){
         given()
                 .when()
                 .header(HttpHeaders.AUTHORIZATION, generateJwt("99", "CUSTOMER"))
                 .get("/v1/orders")
                 .then().statusCode(HttpStatus.SC_OK)
+                .body("data.id", notNullValue())
                 .body("data.id", matchesRegex("d+"))
                 .body("data.user_id", equalTo("99"))
                 .body("data.created_at", matchesRegex("d+"))
@@ -86,12 +89,14 @@ public class OrderControllerTest {
 
 
     @Test
+    @SneakyThrows
     public void testCreateOrder_thenReturn200(){
         given()
                 .when()
                 .header(HttpHeaders.AUTHORIZATION, generateJwt("99", "CUSTOMER"))
                 .post("/v1/orders")
                 .then().statusCode(HttpStatus.SC_OK)
+                .body("data.id", notNullValue())
                 .body("data.id", matchesRegex("d+"))
                 .body("data.user_id", equalTo("99"))
                 .body("data.created_at", matchesRegex("d+"))

@@ -1,4 +1,8 @@
+spring:
+  profiles:
+    active: local
 app.security:
   protected-urls:
     - {method: GET, url: "/v1/orders"}
+    - {method: POST, url: "/v1/orders"}
 

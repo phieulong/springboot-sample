@@ -19,6 +19,8 @@
 
     <modules>
         <module>springboot-sample-api</module>
+        <module>springboot-sample-adapter</module>
+        <module>springboot-sample-core</module>
     </modules>
 
     <dependencies>

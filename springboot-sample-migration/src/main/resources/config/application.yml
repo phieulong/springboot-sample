@@ -1,0 +1,7 @@
+spring:
+  profiles:
+    active: ${app.env:local}
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  liquibase:
+    change-log: classpath:mysql/liquibase-changelog.xml

@@ -1,24 +1,11 @@
+version: '2.2'
 services:
-  postgres:
-    container_name: postgres-sql-springboot-sample
-    image: postgres
+  mysql:
+    container_name: mysql-springboot-sample
+    image: mysql:8
+    command: "mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
     environment:
-      POSTGRES_USER: root
-      POSTGRES_PASSWORD: secret
-      PGDATA: /var/lib/postgresql/data
-      POSTGRES_DB: springboot_sample
-    volumes:
-      - postgres:/data/postgres
+      MYSQL_DATABASE: springboot_sample
+      MYSQL_ROOT_PASSWORD: secret
     ports:
-      - 5432:5432
-    networks:
-      - spring-demo
-    restart: unless-stopped
-
-networks:
-  spring-demo:
-    driver: bridge
-
-volumes:
-  postgres:
-    driver: local
+      - 3307:3306

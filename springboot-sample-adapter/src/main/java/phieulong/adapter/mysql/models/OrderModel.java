@@ -1,4 +1,4 @@
-package phieulong.adapter.postgres.models;
+package phieulong.adapter.mysql.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

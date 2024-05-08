@@ -44,6 +44,13 @@
 <!--            <version>${io.rest-assured.version}</version>-->
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>phieulong</groupId>
+            <artifactId>springboot-sample-migration</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <properties>

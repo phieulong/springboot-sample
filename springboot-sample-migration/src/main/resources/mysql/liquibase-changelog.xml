@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet author="nbngoc" id="20240315000000_init">
+        <sqlFile dbms="mysql"
+                 path="classpath:mysql/sources/20240315000000_init.sql"
+                 relativeToChangelogFile="false"/>
+    </changeSet>
+
+    <changeSet author="nbngoc" id="20240317000000_create_order_table">
+        <sqlFile dbms="mysql"
+                 path="classpath:mysql/sources/20240317000000_create_order_table.sql"
+                 relativeToChangelogFile="false"/>
+    </changeSet>
+
+</databaseChangeLog>

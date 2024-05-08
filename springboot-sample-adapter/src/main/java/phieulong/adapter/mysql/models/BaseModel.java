@@ -1,4 +1,4 @@
-package phieulong.adapter.postgres.models;
+package phieulong.adapter.mysql.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,7 +32,4 @@ public abstract class BaseModel {
     @LastModifiedDate
     @Column(name = "updated_at")
     private Instant updatedAt;
-
-    @Column(name = "deleted_at")
-    private Instant deletedAt;
 }

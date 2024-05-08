@@ -1,8 +1,12 @@
 spring:
   profiles:
     active: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    property-naming-strategy: SNAKE_CASE
 app.security:
   protected-urls:
-    - {method: GET, url: "/v1/orders"}
-    - {method: POST, url: "/v1/orders"}
+    - { method: GET, url: "/v1/orders" }
+    - { method: POST, url: "/v1/orders" }
 

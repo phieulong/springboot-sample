@@ -1,14 +1,14 @@
 package phieulong.adapter.adapters;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Component;
 import phieulong.adapter.mappers.OrderMapper;
-import phieulong.adapter.postgres.models.OrderModel;
-import phieulong.adapter.postgres.repositories.OrderRepository;
+import phieulong.adapter.mysql.models.OrderModel;
+import phieulong.adapter.mysql.repositories.OrderRepository;
 import phieulong.core.entities.OrderEntity;
 import phieulong.core.entities.PageEntity;
 import phieulong.core.ports.IOrderRepositoryPort;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class OrderRepositoryAdapter implements IOrderRepositoryPort {
 
     private final OrderRepository orderRepository;
@@ -30,7 +30,6 @@ public class OrderRepositoryAdapter implements IOrderRepositoryPort {
 
         Specification<OrderModel> orderModelSpecification = (root, query, criteriaBuilder) -> {
             List<Predicate> predicates = new ArrayList<>();
-            predicates.add(criteriaBuilder.isNull(root.get("deletedAt")));
             if (userId != null) {
                 predicates.add(criteriaBuilder.equal(root.get("userId"), userId));
             }
@@ -42,5 +41,10 @@ public class OrderRepositoryAdapter implements IOrderRepositoryPort {
         return new PageEntity<>(orderMapper.fromModels(orderModelsPage.getContent()),
                 page, size,
                 orderModelsPage.getTotalElements(), orderModelsPage.getTotalPages());
+    }
+
+    @Override
+    public OrderEntity save(OrderEntity order) {
+        return orderMapper.fromModel(orderRepository.save(orderMapper.fromEntity(order)));
     }
 }

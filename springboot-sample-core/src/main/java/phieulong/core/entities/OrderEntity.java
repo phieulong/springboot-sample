@@ -1,9 +1,6 @@
 package phieulong.core.entities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.Instant;
 
@@ -11,11 +8,12 @@ import java.time.Instant;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class OrderEntity {
 
     private Long id;
-    private Instant created_at;
-    private Instant updated_at;
-    private Long user_id;
+    private Instant createdAt;
+    private Instant updatedAt;
+    private String userId;
     private String note;
 }
